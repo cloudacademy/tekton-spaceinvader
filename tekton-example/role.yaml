@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: spaceinvader-pipeline-role
+rules:
+- apiGroups: ["extensions", "apps", "route.openshift.io", ""]
+  resources: ["deployments", "services", "routes", "pods", "pvc", "job"]
+  verbs: ["get", "create", "update", "patch", "list", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: spaceinvader-pipeline-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: spaceinvader-pipeline-role
+subjects:
+- kind: ServiceAccount
+  name: docker-login

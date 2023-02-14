@@ -1,0 +1,13 @@
+{
+    "name": "spaceinvader",
+    "version": "1.0.0",
+    "description": "spaceinvader",
+    "author": "jeremy.cook@cloudacademy.com",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }

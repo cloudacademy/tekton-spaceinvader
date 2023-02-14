@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spaceinvader
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spaceinvader
+  template:
+    metadata:
+      labels: 
+        app: spaceinvader
+    spec:
+      containers: 
+      - name: spaceinvader
+        image: cloudacademydevops/spaceinvader:latest
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spaceinvader
+  labels:
+    env: demo
+spec:
+  ports:
+   - protocol: TCP
+     port: 80
+     targetPort: 8081
+  selector:
+    app: spaceinvader
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: spaceinvader
+  labels:
+    env: demo
+spec:
+  to:
+    kind: Service
+    name: spaceinvader
+    weight: 100
+  port:
+    targetPort: 8081
+  wildcardPolicy: None
