@@ -1,7 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spaceinvader
+  labels:
+    app: spaceinvader
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spaceinvader
+  namespace: spaceinvader
 spec:
   replicas: 2
   selector:
@@ -22,6 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spaceinvader
+  namespace: spaceinvader
   labels:
     env: demo
 spec:
@@ -36,6 +45,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: spaceinvader
+  namespace: spaceinvader
   labels:
     env: demo
 spec:
