@@ -51,6 +51,7 @@ spec:
         - name: script
           value: |
             kubectl apply --filename manifest/app.yaml
+            kubectl rollout restart deployment/spaceinvader
       workspaces:
         - name: manifest-dir
           workspace: linked-workspace
