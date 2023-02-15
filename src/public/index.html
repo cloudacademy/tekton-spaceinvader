@@ -25,22 +25,10 @@ body {
 }
 </style>
 
-<script language="javascript">
-setInterval(function(){
-    fetch(window.location.href)
-    .then(response => {
-        window.location.reload(1);
-    })
-    .catch(err => {
-        console.log(err);
-    });
-}, 10000);
-</script>
-
 <body>
     <div id="invader">
         <img src="invader.svg" alt="invader" width="500px">
-        <div>High Score 123000</div>
+        <div>Space Invader v1.0.2</div>
     </div>
 </body>
 </html>
